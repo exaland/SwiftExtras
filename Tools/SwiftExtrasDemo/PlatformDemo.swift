@@ -162,7 +162,7 @@ struct SystemPresentationDemo: View {
         }
         .buttonStyle(.bordered)
         .sheet(isPresented: $showsSettings) {
-            PreferenceKit<EmptyView, EmptyView>(
+            PreferenceKit(
                 createdBy: "SwiftExtras contributors",
                 privacyPolicyURL: URL(string: "https://github.com/0xWDG/SwiftExtras"),
                 supportEmail: nil,

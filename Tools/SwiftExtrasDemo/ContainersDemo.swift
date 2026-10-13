@@ -79,17 +79,21 @@ struct CardAndDisclosureDemo: View {
 struct CarouselDemo: View {
     var body: some View {
         DemoPanel("CarouselView", systemImage: "rectangle.stack") {
-            CarouselView(items: [
-                Image(systemName: "swift"),
-                Image(systemName: "sparkles"),
-                Image(systemName: "shippingbox.fill")
-            ])
-            .symbolRenderingMode(.hierarchical)
-            .foregroundStyle(.blue)
-            .frame(height: 260)
-            .background(.blue.opacity(0.08), in: RoundedRectangle(cornerRadius: 14))
-            .clipShape(RoundedRectangle(cornerRadius: 14))
-            .accessibilityLabel("SwiftExtras symbol carousel")
+            if #available(iOS 17, *) {
+                CarouselView(items: [
+                    Image(systemName: "swift"),
+                    Image(systemName: "sparkles"),
+                    Image(systemName: "shippingbox.fill")
+                ])
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.blue)
+                .frame(height: 260)
+                .background(.blue.opacity(0.08), in: RoundedRectangle(cornerRadius: 14))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .accessibilityLabel("SwiftExtras symbol carousel")
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }
@@ -117,26 +121,34 @@ struct NotificationContainerDemo: View {
 
     var body: some View {
         DemoPanel("NotificationView", systemImage: "bell.badge") {
-            NotificationView(
-                title: "SwiftExtras",
-                message: "The notification component is running live.",
-                onClick: { showsOverlay = false }
-            )
-            .frame(maxWidth: 520)
+            if #available(iOS 17, *) {
+                NotificationView(
+                    title: "SwiftExtras",
+                    message: "The notification component is running live.",
+                    onClick: { showsOverlay = false }
+                )
+                .frame(maxWidth: 520)
+            } else {
+                // Fallback on earlier versions
+            }
 
             Button("Toggle notification modifier") {
                 showsOverlay.toggle()
             }
             .accessibilityHint("Shows or hides the notification modifier example")
 
-            Text("Notification modifier target")
-                .frame(maxWidth: .infinity, minHeight: 80)
-                .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
-                .notification(
-                    title: showsOverlay ? "Modifier active" : "Modifier ready",
-                    message: "Tap the notification to dismiss it.",
-                    onClick: { showsOverlay = false }
-                )
+            if #available(iOS 17, *) {
+                Text("Notification modifier target")
+                    .frame(maxWidth: .infinity, minHeight: 80)
+                    .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
+                    .notification(
+                        title: showsOverlay ? "Modifier active" : "Modifier ready",
+                        message: "Tap the notification to dismiss it.",
+                        onClick: { showsOverlay = false }
+                    )
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }

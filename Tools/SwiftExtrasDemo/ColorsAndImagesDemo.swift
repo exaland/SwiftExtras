@@ -222,7 +222,11 @@ struct ImageExtensionsDemo: View {
             }
 
             Button("Run background removal") {
-                backgroundRemovedImage = Image(systemName: "person.crop.square.fill").removeBackground()
+                if #available(iOS 17.0, *) {
+                    backgroundRemovedImage = Image(systemName: "person.crop.square.fill").removeBackground()
+                } else {
+                    // Fallback on earlier versions
+                }
             }
             .accessibilityHint("Uses Vision to isolate the foreground of a symbol image")
         }

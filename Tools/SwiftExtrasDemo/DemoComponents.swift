@@ -74,23 +74,27 @@ struct DemoPanel<Content: View>: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Label {
-                Text(title)
-            } icon: {
-                Image(systemName: systemImage)
-            }
+        if #available(iOS 17.0, *) {
+            VStack(alignment: .leading, spacing: 16) {
+                Label {
+                    Text(title)
+                } icon: {
+                    Image(systemName: systemImage)
+                }
                 .font(.title2.bold())
                 .accessibilityAddTraits(.isHeader)
-            content
-        }
-        .padding(20)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.background.secondary, in: RoundedRectangle(cornerRadius: 18))
-        .overlay {
-            RoundedRectangle(cornerRadius: 18)
-                .stroke(.separator.opacity(0.5))
-                .accessibilityHidden(true)
+                content
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(.background.secondary, in: RoundedRectangle(cornerRadius: 18))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(.separator.opacity(0.5))
+                    .accessibilityHidden(true)
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
@@ -118,16 +122,20 @@ struct DemoUnavailable: View {
     let systemImage: String
 
     var body: some View {
-        ContentUnavailableView {
-            Label {
-                Text(title)
-            } icon: {
-                Image(systemName: systemImage)
+        if #available(iOS 17.0, *) {
+            ContentUnavailableView {
+                Label {
+                    Text(title)
+                } icon: {
+                    Image(systemName: systemImage)
+                }
+            } description: {
+                Text(reason)
             }
-        } description: {
-            Text(reason)
+            .frame(maxWidth: .infinity, minHeight: 140)
+        } else {
+            // Fallback on earlier versions
         }
-        .frame(maxWidth: .infinity, minHeight: 140)
     }
 }
 

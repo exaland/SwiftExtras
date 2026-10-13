@@ -72,12 +72,12 @@ public struct SESettingsView<TopContent: View, BottomContent: View>: View {
         self.privacyPolicyURL = URL(
             string: "https://wesleydegroot.nl/apps/\(AppInfo.appName.slugified)/privacy/"
         )
-        self.supportEmail = "email+\(AppInfo.appName.slugified)@wesleydegroot.nl"
+        self.supportEmail = "email+\(AppInfo.appName.slugified)@exaland.app"
         self.socialMediaLinks = [
-            .init(platform: .x, profile: "0xWDG"),
-            .init(platform: .bluesky, profile: "0xwdg.bsky.social"),
-            .init(platform: .mastodon, profile: "@0xWDG@mastodon.social"),
-            .init(platform: .website, profile: "https://wesleydegroot.nl")
+            .init(platform: .x, profile: "exaland"),
+            .init(platform: .facebook, profile: "exaland"),
+            .init(platform: .linkedin, profile: "exaland"),
+            .init(platform: .website, profile: "https://exaland.app")
         ]
         self.OSLogSubsystem = "nl.wesleydegroot"
         self.changeLog = _changeLog

@@ -12,6 +12,7 @@
 import SwiftExtras
 import SwiftUI
 
+@available(iOS 17.0, *)
 @main
 @available(macOS 14, *)
 struct SwiftExtrasDemoApp: App {
