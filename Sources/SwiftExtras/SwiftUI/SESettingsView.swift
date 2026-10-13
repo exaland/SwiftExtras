@@ -68,7 +68,7 @@ public struct SESettingsView<TopContent: View, BottomContent: View>: View {
         @ViewBuilder topContent: @escaping () -> TopContent? = { EmptyView() },
         @ViewBuilder bottomContent: @escaping () -> BottomContent? = { EmptyView() }
     ) {
-        self.createdBy = "[Wesley de Groot](https://wesleydegroot.nl)"
+        self.createdBy = "[Alexandre - Exaland](https://exaland.app)"
         self.privacyPolicyURL = URL(
             string: "https://wesleydegroot.nl/apps/\(AppInfo.appName.slugified)/privacy/"
         )
@@ -79,7 +79,7 @@ public struct SESettingsView<TopContent: View, BottomContent: View>: View {
             .init(platform: .linkedin, profile: "exaland"),
             .init(platform: .website, profile: "https://exaland.app")
         ]
-        self.OSLogSubsystem = "nl.wesleydegroot"
+        self.OSLogSubsystem = "com.exaland"
         self.changeLog = _changeLog
         self.acknowledgements = _acknowledgements
         self.customTopSection = topContent
